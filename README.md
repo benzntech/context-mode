@@ -396,23 +396,35 @@ context-mode runs as a native [OpenClaw](https://github.com/openclaw) gateway pl
 
 **Install:**
 
-1. Clone and install:
+**Quick install** (one-liner):
 
-   ```bash
-   git clone https://github.com/mksglu/context-mode.git
-   cd context-mode
-   npm run install:openclaw
-   ```
+```bash
+curl -fsSL https://raw.githubusercontent.com/mksglu/context-mode/main/install.sh | bash
+```
 
-   The installer uses `$OPENCLAW_STATE_DIR` from your environment (default: `/openclaw`). To specify a custom path:
+For a custom state directory:
 
-   ```bash
-   npm run install:openclaw -- /path/to/openclaw-state
-   ```
+```bash
+curl -fsSL https://raw.githubusercontent.com/mksglu/context-mode/main/install.sh | bash -s -- ~/.openclaw
+```
 
-   Common locations: **Docker** — `/openclaw` (the default). **Local** — `~/.openclaw` or wherever you set `OPENCLAW_STATE_DIR`.
+**Manual install:**
 
-   The installer handles everything: `npm install`, `npm run build`, `better-sqlite3` native rebuild, extension registration in `runtime.json`, and gateway restart via SIGUSR1.
+```bash
+git clone https://github.com/mksglu/context-mode.git
+cd context-mode
+npm run install:openclaw
+```
+
+The installer uses `$OPENCLAW_STATE_DIR` from your environment (default: `/openclaw`). To specify a custom path:
+
+```bash
+npm run install:openclaw -- ~/.openclaw
+```
+
+Common locations: **Docker** — `/openclaw` (the default). **Local** — `~/.openclaw` or wherever you set `OPENCLAW_STATE_DIR`.
+
+The installer handles everything: `npm install`, `npm run build`, `better-sqlite3` native rebuild, extension registration in `openclaw.json`, and gateway restart via SIGUSR1.
 
 2. Open a Pi Agent session.
 
